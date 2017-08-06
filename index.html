@@ -64,94 +64,22 @@
                     <h3 class="panel-title">Result</h3>
                 </div>
                 <div class="panel-body">
-                    <h1 id="first-number">1</h1>
-                    <h1 id="operator">plus</h1>
-                    <h1 id="second-number">2</h1>
+                    <h1 id="first-number"></h1>
+                    <h1 id="operator"></h1>
+                    <h1 id="second-number"></h1>
                     <hr>
-                    <h1 id="result">3</h1>
+                    <h1 id="result"></h1>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
+<script type="text/javascript" src="assets/js/calc-app.js"></script>
 <script type="text/javascript">
 
 $(document).ready(function(){
 // Your code here...
-	var input = "";
-	var firstNumber;
-	var chosenOperation = "";
-	var result;
-
-	var clear = function() {
-		input = "";
-		firstNumber = "";
-		chosenOperation = "";
-		result = "";
-		refreshDisplay();
-	};
-
-	var refreshDisplay = function() {
-		$("#first-number").text(firstNumber);
-		$("#operator").text(chosenOperation);
-		if(firstNumber) {
-			$("#second-number").text(input);
-		}
-		$("#result").text(result);
-	};
-
-	var add = function(a, b) {
-		return a + b;
-	};
-
-	var subtract = function(a, b) {
-		return a - b;
-	};
-
-	var multiply = function(a, b) {
-		return a * b;
-	};
-
-	var divide = function(a, b) {
-		return a / b;
-	};
-
-	var power = function(a, b) {
-		return Math.pow(a, b);
-	};
-
-	var operations = {
-		plus: add,
-		minus: subtract,
-		times: multiply,
-		divide: divide,
-		power: power,
-	};
-
-	var numberHandler = function() {
-		input += $(this).val();
-		console.log(input);
-		refreshDisplay();
-	};
-
-	var operationsHandler = function() {
-		firstNumber = input;
-		input = "";
-
-		chosenOperation = $(this).val();
-		refreshDisplay();
-	};
-
-	var equalsHandler = function() {
-		result = operations[chosenOperation](parseInt(firstNumber), parseInt(input));
-		refreshDisplay();
-	};
-
-	$(".number").on("click", numberHandler);
-	$(".operator").on("click", operationsHandler);
-	$(".equal").on("click", equalsHandler);
-	$(".clear").on("click", clear);
 
 });
 
