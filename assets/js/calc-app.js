@@ -73,7 +73,11 @@
 	};
 
 	var numberHandler = function() {
-		// append button click to currentInput String.
+		/*
+			Append button click to currentInput String.
+			Because this is called from a button click, `this` references the button
+			that caused this handler to execute.
+		*/
 		currentInput += $(this).val();
 
 		if(chosenOperation === "") {
