@@ -64,8 +64,8 @@
 		chosenOperation = "";
 		result = "";
 
-		// Reset the display.
-		$(".panel-body").empty();
+		// Reset the display. Select `h1` children of `.panel-body`
+		$(".panel-body > h1").empty();
 	};
 
 	var numberHandler = function() {
