@@ -64,12 +64,8 @@
 		chosenOperation = "";
 		result = "";
 
-		/*
-			Reset the display.
-			I cheated a bit by adding an `.output` class to the html's h1 display
-			tags. Using this class, I can wipe all four outputs at once.
-		*/
-		$(".output").text("");
+		// Reset the display.
+		$(".panel-body").empty();
 	};
 
 	var numberHandler = function() {
