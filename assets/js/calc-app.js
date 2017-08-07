@@ -1,6 +1,6 @@
 (function Calculator($) {
 	var currentInput = "";
-	var numbers = [];
+	var firstNumber = "";
 	var chosenOperation = "";
 	var result;
 
@@ -37,46 +37,45 @@
 		},
 	};
 
+	var clear = function() {
+		currentInput = "";
+		firstNumber = ""
+		chosenOperation = "";
+		result = "";
+
+		$(".output").text("");
+	};
+
+	var numberHandler = function() {
+		currentInput += $(this).val();
+
+		if(chosenOperation === "") {
+			$("#first-number").text(currentInput);
+		} else {
+			$("#second-number").text(currentInput);
+		}
+	};
+
+	var operationsHandler = function() {
+		$("#first-number").text(currentInput);
+		firstNumber = currentInput;
+		currentInput = "";
+
+		chosenOperation = $(this).val();
+		$("#operator").text(operations[chosenOperation].sign);
+	};
+
+	var equalsHandler = function() {
+		result = operations[chosenOperation].operation(parseInt(firstNumber), parseInt(currentInput));
+		$("#result").text(result);
+	};
+
 	var init = function() {
 		$(".number").on("click", numberHandler);
 		$(".operator").on("click", operationsHandler);
 		$(".equal").on("click", equalsHandler);
 		$(".clear").on("click", clear);
 	}
-
-	var clear = function() {
-		currentInput = "";
-		numbers = [];
-		chosenOperation = "";
-		result = "";
-		refreshDisplay(true);
-	};
-
-	var refreshDisplay = function(isClear) {
-		$("#first-number").text(numbers[0]);
-		$("#operator").text(operations(chosenOperation).sign);
-		$("#second-number").text(numbers[1]);
-		$("#result").text(result);
-	};
-
-	var numberHandler = function() {
-		currentInput += $(this).val();
-		console.log(input);
-		refreshDisplay();
-	};
-
-	var operationsHandler = function() {
-		numbers.push(currentInput);
-		currentInput = "";
-		chosenOperation = $(this).val();
-		refreshDisplay();
-	};
-
-	var equalsHandler = function() {
-		numbers.push(currentInput);
-		result = operations[chosenOperation].operation(parseInt(numbers[0]), parseInt(numbers[1]));
-		refreshDisplay();
-	};
 
 	init();
 
