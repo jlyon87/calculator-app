@@ -13,7 +13,7 @@
 	var currentInput = "";
 	var firstNumber = "";
 	var chosenOperation = "";
-	var result;
+	var result = "";
 
 	/*
 		Each operand is stored in the operations object.
